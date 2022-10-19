@@ -1,15 +1,12 @@
 import React from "react";
 import * as ReactDOM from "react-dom";
 import App from "./App.js";
-
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// const element = <h1>Hello World</h1>;
-// root.render(
-//     <App/>
-// );
+//import "./scss/style.scss";
+import "./styles.css";
 
 ReactDOM.render(
 <div>
+    <h1>Hello Style!</h1>
     <App />
 </div>,
 document.getElementById('root')
