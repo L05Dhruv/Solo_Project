@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -5,24 +6,34 @@ module.exports = {
      entry: 'src/index.js',
 
      output: {
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
      },
 
      mode: 'development',
 
      plugins: [
         new HtmlWebpackPlugin({
-            template: "src/index.html"
+            template: "./src/index.html"
         })
      ],
 
      devServer: {
+        host: 'localhost',
+        port: 3000,
         static: {
-            directory: path.resolve(__dirname, 'build'),
+            directory: path.resolve(__dirname, 'dist'),
+            publicPath: '/',
         },
+        hot: true,
+        historyApiFallback: true,
+
         proxy: {
-            '/api': 'http://localhost:3000',
+            '/api/': {
+                target: 'http://localhost:3000/',
+                secure: false,
+            },
         },
         headers: {
             "Access-Control-Allow-Origin": "*",
@@ -37,22 +48,17 @@ module.exports = {
      module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.jsx?$/i,
                 exclude: /node_modules/,
                 loader: require.resolve("babel-loader"),
             },
             {
-                test: /\.css$/,
+                test: /\.css$/i,
                 exclude: /node_modules/,
-                use: [{loader: "css-loader"}],
+                use: ["style-loader", "css-loader"],
             },
             {
-                test: /\.s[ac]ss$/,
-                exclude: /node_modules/,
-                use: [{loader: "sass-loader"}, {loader: "css-loader"}],
-            },
-            {
-              test: /\.png|svg|jpg|gif$/,
+              test: /\.png|svg|jpg|gif$/i,
               use: ["file-loader"],
             },
         ]
