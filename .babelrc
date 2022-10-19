@@ -1,0 +1,5 @@
+{
+    "presets": ["@babel/preset-react", "@babel/preset-env"]
+}
+
+//Says "I want to take JSX, React and ES6 code and transpile that
