@@ -1,0 +1,10 @@
+@import 'variables';
+@import 'mixins';
+@import 'card';
+
+body {
+    background-color: $primaryBackground;
+    min-height: 100vh;
+    @include flex-center;
+    color: $wordColor;
+}
