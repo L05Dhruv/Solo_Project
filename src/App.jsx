@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import WordForm from "./WordForm.jsx"
+import Container from "./Container.jsx"
+import Cards from "./Cards.jsx"
 
 function App () {
         return (
@@ -11,10 +12,13 @@ function App () {
                 <a>
                     But we can help you remember words in the English language pretty much for the rest of your measly existence.
                 </a>
-                <div className="top">
-                   <label className="Total Words">Total Words: </label>  <WordForm/>
+                <div>
+                   <Container/>
                 </div>
                 <hr></hr>
+                <div>
+                    <Cards />
+                </div>
             </div>
         );
 }

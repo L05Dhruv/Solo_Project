@@ -7,7 +7,7 @@ body {
 }
 
 h1 {
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:goudy old style;
     font-size: xx-large;
     text-align: center;
     margin-top: 15px;
@@ -19,6 +19,7 @@ p {
     font-size: large;
     display: flex;
     margin-top: 50px;
+    font-family: Bahnschrift;
 }
 
 a {
@@ -26,6 +27,7 @@ a {
     flex: auto;
     margin-top: 20 px;
     margin-bottom: 30px;
+    font-family: Bahnschrift;
 }
 
 .top {
@@ -34,7 +36,6 @@ a {
     flex-direction: row;
     justify-content: center;
     gap: 80px;
-    
 }
 
 #WordForm {

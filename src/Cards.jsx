@@ -1,12 +1,15 @@
 import React, {useState} from "react";
 
-function Cards () {
-    const wordList = [];
-
+const Cards = (props) => {
+    const cardsList = [];
+    props.wordList;
 
     return (
         <div>
+            <h3>Your Learning list</h3>
 
         </div>
     )
 }
+
+export default Cards;
