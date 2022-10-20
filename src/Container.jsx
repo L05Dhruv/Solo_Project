@@ -5,7 +5,7 @@ function Container () {
 
     const [word, setWord] = useState('');
     const [wordList, setWordList] = useState([]);
-    const numOfWords = wordList.length;
+    let numOfWords = wordList.length;
     const [cardObj, setCardObj] = useState({
         id: 0,
         word: '',
@@ -40,20 +40,21 @@ function Container () {
         fetch(url)
         .then((data) => data.json())
         .then((json) => {
+            let sound = '';
+            if (json[0].phonetics[0].audio) sound = json[0].phonetics[0].audio;      //if primary audio exists, use that for audio property
+            else if (json[0].phonetics[1].audio) {sound = json[0].phonetics[1].audio; console.log(json[0].phonetics[1].audio)} //use alternate phonetics audio if first is null
+            else sound = undefined;
+
             setCardObj({
                 id: wordList.length + 1,
                 word: newWord.word,
                 definition: json[0].meanings[0].definitions[0].definition,
-                example: json[0].meanings[0].definitions[0].example,
-                audio: json[0].phonetics[0].audio
+                example: (json[0].meanings[0].definitions[0].example) ? json[0].meanings[0].definitions[0].example : 'N/A',
+                audio: sound,
+                second: false
             })
         })
     }
-
-    // useEffect(() => {
-    //     console.log('Word List: ', wordList);
-    //     console.log('newly added word: ', word);
-    // }, [wordList]);
 
     useEffect(() => {
         setFlashcards([...flashcards, cardObj]);
