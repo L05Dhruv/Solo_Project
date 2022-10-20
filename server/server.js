@@ -2,13 +2,16 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
+const controller = require('./controller.js');
 //app.use('/', express.static(path.join(__dirname, '../src/index.html')));
 
 app.get('/', (req, res) => {
     return res.status(200).sendFile(path.resolve(__dirname, '../src/index.html'));
 });
 
-
+// app.get('/signup', controller.addUser, (req, res) => {
+//     res.sendFile(path.resolve(__dirname, '../signup.html')); 
+// });
 
 app.listen(3000, ()=> {
     console.log('Server listening on port: ' + 3000);

@@ -4,6 +4,7 @@ import soundIcon from "../speaker-volume.png"
 const Card = ({flashcard}) => {
     const handleIClick = () => {
         // setAudio(new Audio(flashcard.audio))
+        if (flashcard.audio === '') {alert('No sound available for this word. Try another one'); return;}
         const sound = new Audio(flashcard.audio);
         console.log(sound);
         sound.play();

@@ -5,31 +5,17 @@ function Container () {
 
     const [word, setWord] = useState('');
     const [wordList, setWordList] = useState([]);
-    let numOfWords = wordList.length;
     const [cardObj, setCardObj] = useState({
         id: 0,
         word: '',
         definition: '',
         example: '' 
     })
-
+    
     const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
-    const SAMPLE_DATA = [
-        {
-            id: 1,
-            word: 'Apple',
-            definition: 'A fruit',
-            example: 'An apple landed on Newtons head.'
-        },
-        {
-            id: 2,
-            word: 'Beautiful',
-            definition: 'A word used to describe me',
-            example: 'Dont hate me because Im beautiful.'
-        }
-    ];
     const [flashcards, setFlashcards] = useState([]);
-
+    let numOfWords = flashcards.length - 1;
+    
     const handleSubmit  = (e) =>{
         e.preventDefault();
         const newWord = {word};
@@ -42,8 +28,8 @@ function Container () {
         .then((json) => {
             let sound = '';
             if (json[0].phonetics[0].audio) sound = json[0].phonetics[0].audio;      //if primary audio exists, use that for audio property
-            else if (json[0].phonetics[1].audio) {sound = json[0].phonetics[1].audio; console.log(json[0].phonetics[1].audio)} //use alternate phonetics audio if first is null
-            else sound = undefined;
+            else if (json[0].phonetics[1].audio) {sound = json[0].phonetics[1].audio;} //use alternate phonetics audio if first is null
+            else sound = '';
 
             setCardObj({
                 id: wordList.length + 1,
