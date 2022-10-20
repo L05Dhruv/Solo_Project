@@ -1,7 +1,9 @@
 /*# sourceMappingURL=styles.css.map */
 
 body {
-    background-color: whitesmoke
+    background-color: #D9AFD9;
+    background-image: linear-gradient(45deg, #D9AFD9 0%, #97D9E1 100%);
+    height: 100vh;
 }
 
 h1 {
@@ -13,13 +15,13 @@ h1 {
     display: block;
 }
 
-p1 {
+p {
     font-size: large;
     display: flex;
     margin-top: 50px;
 }
 
-p2 {
+a {
     display: flex;
     flex: auto;
     margin-top: 20 px;
@@ -42,20 +44,14 @@ p2 {
     justify-content: flex-end;
 }
 
-input[type="submit"].newWord {
-    border-radius: 10px;
-    border: none;
-    box-shadow: none;
-    font-family: inherit;
-    font-size: medium;
-    color: aquamarine;
-    background-color: blue;
+label {
+    margin-right: 10px;
 }
 
 input[type="submit"] {
     border-radius: 8px;
     border: none;
-    box-shadow: 5px 2px 6px 8px lightcyan;
+    box-shadow: 0px 0px 15px 9px lightcyan;
     font-family: inherit;
     font-size: medium;
     color: black;

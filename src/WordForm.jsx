@@ -1,16 +1,15 @@
 import React, {useState, useEffect} from "react";
 
 function WordForm () {
-    const [word, setWord] = useState('');
     const [wordList, setWordList] = useState(['welcome']);
+    const [word, setWord] = useState('');
 
     const handleSubmit  = (e) =>{
         e.preventDefault();
         const newWord = {word};
         console.log(newWord.word, ' added.');
 
-        setWordList(wordList.concat(newWord.word));
-        console.log(wordList);
+        setWordList([...wordList, newWord.word]);
 
         // fetch('http://localhost:3000/words', {
         //     method: 'POST',
@@ -21,15 +20,15 @@ function WordForm () {
         // });
     }
 
-    // useEffect(() => {
-    //     console.log('useEffect ', word);
-    // }, [word]);
+    useEffect(() => {
+        console.log('useEffect ', wordList);
+    }, [wordList]);
 
     return (
         <div>
         <form className="newWord" onSubmit={handleSubmit}>
-            <label>Enter a word:
-                <input type="text" required id="newWord" value={word} onChange={(e) => setWord(e.target.value)}></input>
+            <label>
+                <input type="text" required id="newWord" placeholder="Enter word" value={word} onChange={(e) => setWord(e.target.value)}></input>
             </label>
             <input type="submit" value="Add to stack"></input>
         </form>
