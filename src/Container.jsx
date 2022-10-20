@@ -14,9 +14,6 @@ function Container () {
     })
 
     const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
-    const defintion = '';
-
-    
     const SAMPLE_DATA = [
         {
             id: 1,
@@ -31,26 +28,41 @@ function Container () {
             example: 'Dont hate me because Im beautiful.'
         }
     ];
-    const [flashcards, setFlashcards] = useState(SAMPLE_DATA);
+    const [flashcards, setFlashcards] = useState([]);
 
     const handleSubmit  = (e) =>{
         e.preventDefault();
         const newWord = {word};
-        console.log(newWord.word, ' added.');
+        // console.log(newWord.word, ' added.');
 
         setWordList([...wordList, newWord.word]);
-    }
 
-    useEffect(() => {
-        console.log('list of words: ', wordList);
-        console.log('newly added word: ', word);
         fetch(url)
         .then((data) => data.json())
         .then((json) => {
-            console.log(json[0]);
+            setCardObj({
+                id: wordList.length + 1,
+                word: newWord.word,
+                definition: json[0].meanings[0].definitions[0].definition,
+                example: json[0].meanings[0].definitions[0].example,
+                audio: json[0].phonetics[0].audio
+            })
+        })
+    }
 
-        });
-    }, [wordList]);
+    // useEffect(() => {
+    //     console.log('Word List: ', wordList);
+    //     console.log('newly added word: ', word);
+    // }, [wordList]);
+
+    useEffect(() => {
+        setFlashcards([...flashcards, cardObj]);
+        console.log('New card object: ', cardObj);
+    }, [cardObj]);
+    
+    useEffect(() => {
+        console.log('flashcards list: ', flashcards);
+    }, [flashcards]);
 
     return (
         <div>
