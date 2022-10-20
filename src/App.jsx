@@ -15,10 +15,6 @@ function App () {
                 <div>
                    <Container/>
                 </div>
-                <hr></hr>
-                <div>
-                    <Cards />
-                </div>
             </div>
         );
 }

@@ -1,10 +1,37 @@
 import React, {useState, useEffect} from "react";
 import Cards from "./Cards.jsx"
 
-function WordForm () {
+function Container () {
+
     const [word, setWord] = useState('');
     const [wordList, setWordList] = useState([]);
     const numOfWords = wordList.length;
+    const [cardObj, setCardObj] = useState({
+        id: 0,
+        word: '',
+        definition: '',
+        example: '' 
+    })
+
+    const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
+    const defintion = '';
+
+    
+    const SAMPLE_DATA = [
+        {
+            id: 1,
+            word: 'Apple',
+            definition: 'A fruit',
+            example: 'An apple landed on Newtons head.'
+        },
+        {
+            id: 2,
+            word: 'Beautiful',
+            definition: 'A word used to describe me',
+            example: 'Dont hate me because Im beautiful.'
+        }
+    ];
+    const [flashcards, setFlashcards] = useState(SAMPLE_DATA);
 
     const handleSubmit  = (e) =>{
         e.preventDefault();
@@ -12,22 +39,22 @@ function WordForm () {
         console.log(newWord.word, ' added.');
 
         setWordList([...wordList, newWord.word]);
-
-        // fetch('http://localhost:3000/words', {
-        //     method: 'POST',
-        //     headers: { "Content-Type": "application/json"},
-        //     body: JSON.stringify(newWord)
-        // }).then(() => {
-        //     console.log('new word added');
-        // });
     }
 
     useEffect(() => {
-        console.log('useEffect ', wordList);
+        console.log('list of words: ', wordList);
+        console.log('newly added word: ', word);
+        fetch(url)
+        .then((data) => data.json())
+        .then((json) => {
+            console.log(json[0]);
+
+        });
     }, [wordList]);
 
     return (
-        <div className="top">
+        <div>
+            <div className="top">
             <label className="Total Words">Total Words: {numOfWords}</label>
             <form className="newWord" onSubmit={handleSubmit}>
                 <label>
@@ -35,8 +62,13 @@ function WordForm () {
                 </label>
                 <input type="submit" value="Add to stack"></input>
             </form>
+            </div>
+            <hr></hr>
+            <div>
+                <Cards flashcards={flashcards}/>
+            </div>
         </div>
     );
 }
 
-export default WordForm;
+export default Container;

@@ -1,13 +1,16 @@
 import React, {useState} from "react";
+import Card from "./Card.jsx";
 
-const Cards = (props) => {
-    const cardsList = [];
-    props.wordList;
+const Cards = ({flashcards}) => {
+    const arr = [];
+    flashcards.forEach(elem => {
+        arr.push(<Card flashcard={elem} key={elem.id}/>);
+    });
 
     return (
-        <div>
+        <div className="card-stack">
             <h3>Your Learning list</h3>
-
+            {arr}
         </div>
     )
 }
