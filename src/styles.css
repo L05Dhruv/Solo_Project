@@ -2,29 +2,30 @@
 
 body {
     background-color: #D9AFD9;
-    background-image: linear-gradient(45deg, #D9AFD9 0%, #97D9E1 100%);
+    background-image: linear-gradient(45deg, #bd90bd 0%, #97D9E1 100%);
     height: 100vh;
     font-family: Bahnschrift, Luminara;
 }
 
-h1 {
-    font-family:goudy old style;
-    font-size: xx-large;
-    text-align: center;
-    margin-top: 15px;
 
-    display: block;
+
+menu {
+    list-style: none;
+}
+
+h1 {
+    margin-top: 60px;
+    font-family:goudy old style;
+    text-align: center;
+    font-size: xx-large;
 }
 
 p {
     font-size: large;
-    display: flex;
     margin-top: 50px;
 }
 
 a {
-    display: flex;
-    flex: auto;
     margin-top: 20 px;
     margin-bottom: 30px;
 }
@@ -56,24 +57,48 @@ input[type="text"] {
     border: lightcyan;
 }
 
+.card-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: -100px;
+}
+
 .CardBox {
     display: flex;
     flex: auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: rgb(87, 85, 85);
     border-radius: 0.5rem;
     background-color: antiquewhite;
     background-image: linear-gradient(45deg, rgba(36, 158, 228, 0.651) 0%, rgba(150, 131, 26, 0.76) 100%);
-    box-shadow: 0 0 5px 7px darkslategray;
-    height: 250px;
-    width: 300px;
-    padding: 1rem;
+    height: 350px;
+    width: 450px;
+    
+
+    padding: 15px;
+    margin-top: 100px;
+    box-shadow: 10px -10px 0 -3px rgba(150, 131, 26, 0.76), 10px -10px yellowgreen,
+        20px -20px 0 -3px rgba(150, 131, 26, 0.76), 20px -20px skyblue, 
+        30px -30px 0 -3px rgba(150, 131, 26, 0.76), 30px -30px rgba(0, 255, 255, 0.63), 
+        40px -40px 0 -3px rgba(150, 131, 26, 0.76), 40px -40px seashell; 
+    transition: box-shadow 1s, top 1s, left 1s;
+    position: relative;
+    top: 0;
+    left: 0;
+    cursor: pointer;
 }
 
-.card-stack {
+.checkContainer {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin-left: 350px;
+    margin-top: 0px;
+    cursor: pointer;
+}
+
+.checkContainer:hover {
+    background-color: aquamarine;
 }
